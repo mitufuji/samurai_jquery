@@ -119,10 +119,14 @@ class PostController extends Controller
             $like->user_id = $user_id;
             $like->save();
         } else { 
-            Like::where('post_id', $post_id)->where('user_id', $user_id)->delete();
+            Like::where('post_id', $post_id)
+                ->where('user_id', $user_id)
+                ->delete();
         }
         
-        $post_likes_count = Post::withCount('likes')->findOrFail($post_id)->likes_count;
+        $post_likes_count = Post::withCount('likes')
+            ->findOrFail($post_id)
+            ->likes_count;
         $param = [
             'post_likes_count' => $post_likes_count,
         ];
