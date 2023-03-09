@@ -25,4 +25,4 @@ Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
 Route::get('/posts/{category}', [PostController::class, 'show'])->name('posts.show')->middleware('auth');
 
-Route::post('/like', [PostController::class, 'like'])->name('posts.like')->middleware('auth');
+Route::post('/likes', [LikeController::class, 'like'])->name('likes.like')->middleware('auth');

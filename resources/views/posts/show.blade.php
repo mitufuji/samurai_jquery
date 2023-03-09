@@ -31,7 +31,4 @@
         <span class="like">{{$post->likes_count}}</span>
     </div>
     @endforeach 
-
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="{{ asset('/js/like.js') }}"></script>
 @endsection

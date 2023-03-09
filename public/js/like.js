@@ -9,7 +9,7 @@ $(function () {
         headers: { 
           'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
         },  
-        url: '/like', 
+        url: 'like', 
         method: 'POST', 
         data: { 
           'post_id': likePostId 
@@ -20,8 +20,13 @@ $(function () {
         $this.next('.like-counter').html(data.post_likes_count);
       })
       
-      .fail(function () {
+      .fail(function(jqXHR, textStatus, errorThrown){
         console.log('fail'); 
+        console.log("ajax通信に失敗しました");
+                    console.log("jqXHR          : " + jqXHR.status); // HTTPステータスが取得
+                    console.log("textStatus     : " + textStatus);    // タイムアウト、パースエラー
+                    console.log("errorThrown    : " + errorThrown.message); // 例外情報
+                    console.log("URL            : " + url);
       });
     });
 });
