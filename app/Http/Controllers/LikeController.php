@@ -33,6 +33,7 @@ class LikeController extends Controller
         $param = [
             'post_likes_count' => $post_likes_count,
         ];
+
         return response()->json($param); 
     }
 }

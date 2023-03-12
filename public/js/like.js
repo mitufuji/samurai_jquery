@@ -9,7 +9,7 @@ $(function () {
         headers: { 
           'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
         },  
-        url: '/likes', 
+        url: '/laravel-samuraimart/public/likes', 
         method: 'POST', 
         data: { 
           'post_id': likePostId 
@@ -23,10 +23,10 @@ $(function () {
       .fail(function(jqXHR, textStatus, errorThrown){
         console.log('fail'); 
         console.log("ajax通信に失敗しました");
-                    console.log("jqXHR          : " + jqXHR.status); // HTTPステータスが取得
-                    console.log("textStatus     : " + textStatus);    // タイムアウト、パースエラー
-                    console.log("errorThrown    : " + errorThrown.message); // 例外情報
-                    console.log("URL            : " + url);
+                    console.log("jqXHR          : " + jqXHR.status); 
+                    console.log("textStatus     : " + textStatus);    
+                    console.log("errorThrown    : " + errorThrown.message); 
+                    // console.log("URL            : " + url);
       });
     });
 });

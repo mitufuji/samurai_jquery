@@ -54,8 +54,7 @@ class PostController extends Controller
 
         $return_id = $post->category_id;
         $category = Category::find($return_id);
-        // $category_choice = Category::where('id', $post->category_id)->get();
-        // logger($category_choice);
+        
         return redirect()->route('posts.show', ['category' => $category]);
     }
 
@@ -67,7 +66,7 @@ class PostController extends Controller
      */
     public function show(Category $category)
     {
-        $posts = Post::where('category_id', $category->id)->get();
+        $posts = Post::where('category_id', $category->id)->withCount('likes')->get();
         $categories = Category::all();
 
         return view('posts.show', compact('category', 'posts', 'categories'));

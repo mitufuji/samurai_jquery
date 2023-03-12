@@ -16,11 +16,12 @@
         <div>
             <label for="content">メッセージ入力</label>
             <input type="text" class='form-control' name='content'>
+
             <input type="hidden" name='category_id' value="{{ $category->id }}">
         </div>
         
         <button type='submit'>メッセージ投稿</button>
-    </form> 
+</form> 
    
     
     @foreach($posts as $post)
@@ -28,7 +29,7 @@
         <h4>{{ $post->user_name }}</h4> 
         <p>{{ $post->content }}</p>
         <i class="button" data-post-id="{{ $post->id }}">👍</i>
-        <span class="like">{{$post->likes_count}}</span>
+        <span class="like-counter">{{$post->likes_count}}</span>
     </div>
     @endforeach 
 @endsection
