@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Image;
 use App\Models\Like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -54,6 +55,15 @@ class PostController extends Controller
 
         $return_id = $post->category_id;
         $category = Category::find($return_id);
+
+        $dir = 'sample';
+        $file_name = $request->file('image')->getClientOriginalName();
+        $request->file('image')->storeAs('public/' . $dir, $file_name);
+
+        $image = new Image();
+        $image->name = $file_name;
+        $image->path = 'storage/' . $dir . '/' . $file_name;
+        $image->save();
         
         return redirect()->route('posts.show', ['category' => $category]);
     }
