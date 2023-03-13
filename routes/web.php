@@ -28,3 +28,5 @@ Route::post('/categories', [CategoryController::class, 'store'])->name('categori
 Route::get('/posts/{category}', [PostController::class, 'show'])->name('posts.show')->middleware('auth');
 
 Route::post('/likes', [LikeController::class, 'like'])->name('likes.like')->middleware('auth');
+
+Route::post('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');

@@ -26,4 +26,8 @@ class Post extends Model
     public function isLikedBy($user): bool {
         return Like::where('user_id', $user->id)->where('review_id', $this->id)->first() !==null;
     }
+
+    public function image(){
+        return $this->belongsTo(Image::class);
+    }
 }

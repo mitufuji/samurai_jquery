@@ -13,4 +13,9 @@ class Image extends Model
         'name',
         'path',
     ];
+
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }
 }

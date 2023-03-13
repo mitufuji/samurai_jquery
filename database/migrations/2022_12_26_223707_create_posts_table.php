@@ -19,6 +19,9 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->integer('category_id');            
             $table->string('user_name');
+            $table->string('image_id')->nullable();
+            $table->string('image_name')->nullable();
+            $table->string('image_path')->nullable();
             $table->timestamps();
         });
 

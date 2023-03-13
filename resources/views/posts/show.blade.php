@@ -28,9 +28,13 @@
     <div>
         <h4>{{ $post->user_name }}</h4> 
         <p>{{ $post->content }}</p>
-        <img src="{{ asset($image->path) }}">
+        <img src="{{ asset($post->image_path) }}">
         <i class="button" data-post-id="{{ $post->id }}">👍</i>
         <span class="like-counter">{{$post->likes_count}}</span>
+        <form action="{{ route('posts.destroy', $post) }}" method="post">
+            @csrf                                     
+            <button type="submit">画像を削除</button>
+        </form>
     </div>
     @endforeach 
 @endsection
