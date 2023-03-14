@@ -49,17 +49,17 @@ class PostController extends Controller
         ]);
    
         $dir = 'images';
-        $file_name = $request->file('image');//->getClientOriginalName();
+        $file_name = $request->file('image')->getClientOriginalName();
         //$request->file('image')->storeAs('public/' . $dir, $file_name);
         //$image_path = 'storage/' . $dir . '/' . $file_name;
         //$image_sample = base64_decode($request->file('image'));
         Storage::putFileAs("public/{$dir}", $request->file('image'), $file_name);
-
+ 
         $image = new Image();
         $image->name = $file_name;
-        $image->path = "storage/{$dir}{$file_name}";
+        $image->path = "storage/{$dir}/{$file_name}";
         $image->save();
-        
+        //public/storage/images/de-an-sun-4xk-NZKehkY-unsplash (2).jpg
         $post_image = Image::where('name', $file_name)->first();
         
         $post = new Post();
